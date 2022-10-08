@@ -405,7 +405,7 @@ public sealed partial class ShuttleSystem
 
        if (!string.IsNullOrEmpty(centComPath))
        {
-           var (_, centcomm) = _loader.LoadGrid(CentComMap.Value, "/Maps/centcomm.yml");
+           var (_, centcomm) = _loader.LoadGrid(CentComMap.Value, "/Maps/Test/floor3x3.yml");
            CentCom = centcomm;
 
            if (CentCom != null)
