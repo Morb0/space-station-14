@@ -6,7 +6,7 @@
   icon: "Passenger"
   supervisors: job-supervisors-everyone
   access:
-  - Maintenance
+  - Service
 
 - type: startingGear
   id: PassengerGear
