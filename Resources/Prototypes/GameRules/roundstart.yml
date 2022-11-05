@@ -31,12 +31,6 @@
     id: Pirates
 
 - type: gameRule
-  id: Suspicion
-  config:
-    !type:GenericGameRuleConfiguration
-    id: Suspicion
-
-- type: gameRule
   id: Traitor
   config:
     !type:GenericGameRuleConfiguration

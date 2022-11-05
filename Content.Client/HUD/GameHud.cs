@@ -34,7 +34,6 @@ namespace Content.Client.HUD
         Control RootControl { get; }
 
         Control HandsContainer { get; }
-        Control SuspicionContainer { get; }
         Control BottomLeftInventoryQuickButtonContainer { get; }
         Control BottomRightInventoryQuickButtonContainer { get; }
         Control TopInventoryQuickButtonContainer { get; }
@@ -67,7 +66,6 @@ namespace Content.Client.HUD
         [Dependency] private readonly INetConfigurationManager _configManager = default!;
 
         public Control HandsContainer { get; private set; } = default!;
-        public Control SuspicionContainer { get; private set; } = default!;
         public Control TopInventoryQuickButtonContainer { get; private set; } = default!;
         public Control BottomLeftInventoryQuickButtonContainer { get; private set; } = default!;
         public Control BottomRightInventoryQuickButtonContainer { get; private set; } = default!;
@@ -206,11 +204,6 @@ namespace Content.Client.HUD
             centerBottomContainer.AddChild(TopInventoryQuickButtonContainer);
             centerBottomContainer.AddChild(bottomRow);
 
-            SuspicionContainer = new Control
-            {
-                HorizontalAlignment = Control.HAlignment.Center
-            };
-
             var rightBottomContainer = new BoxContainer
             {
                 Orientation = LayoutOrientation.Horizontal,
@@ -224,13 +217,6 @@ namespace Content.Client.HUD
             RootControl.AddChild(rightBottomContainer);
 
             rightBottomContainer.AddChild(_combatPanelContainer);
-
-            RootControl.AddChild(SuspicionContainer);
-
-            LC.SetAnchorAndMarginPreset(SuspicionContainer, LC.LayoutPreset.BottomLeft,
-                margin: 10);
-            LC.SetGrowHorizontal(SuspicionContainer, LC.GrowDirection.End);
-            LC.SetGrowVertical(SuspicionContainer, LC.GrowDirection.Begin);
 
             _topNotificationContainer = new BoxContainer
             {

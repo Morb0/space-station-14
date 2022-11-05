@@ -270,25 +270,6 @@ namespace Content.Shared.CCVar
             CVarDef.Create("discord.ahelp_avatar", string.Empty, CVar.SERVERONLY);
 
         /*
-         * Suspicion
-         */
-
-        public static readonly CVarDef<int> SuspicionMinPlayers =
-            CVarDef.Create("suspicion.min_players", 5);
-
-        public static readonly CVarDef<int> SuspicionMinTraitors =
-            CVarDef.Create("suspicion.min_traitors", 2);
-
-        public static readonly CVarDef<int> SuspicionPlayersPerTraitor =
-            CVarDef.Create("suspicion.players_per_traitor", 6);
-
-        public static readonly CVarDef<int> SuspicionStartingBalance =
-            CVarDef.Create("suspicion.starting_balance", 20);
-
-        public static readonly CVarDef<int> SuspicionMaxTimeSeconds =
-            CVarDef.Create("suspicion.max_time_seconds", 300);
-
-        /*
          * Traitor
          */
 
