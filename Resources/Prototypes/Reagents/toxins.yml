@@ -394,24 +394,6 @@
           disease: VentCough
 
 - type: reagent
-  id: Corpium
-  name: reagent-name-corpium
-  desc: reagent-desc-corpium
-  physicalDesc: reagent-physical-desc-necrotic
-  flavor: bitter
-  color: "#7668a1"
-  metabolisms:
-    Poison:
-      effects:
-        - !type:HealthChange
-          damage:
-            types:
-              Cellular: 1
-        - !type:ChemCauseDisease
-          causeChance: 1
-          disease: ActiveZombieVirus
-
-- type: reagent
   id: UncookedAnimalProteins
   name: reagent-name-uncooked-animal-proteins
   desc: reagent-desc-uncooked-animal-proteins

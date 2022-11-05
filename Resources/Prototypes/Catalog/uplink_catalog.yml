@@ -309,24 +309,6 @@
   - UplinkBundles
 
 - type: listing
-  id: UplinkZombieBundle
-  icon: /Textures/Structures/Wallmounts/signs.rsi/bio.png
-  productEntity: ClothingBackpackDuffelZombieBundle
-  cost:
-    Telecrystal: 40
-  categories:
-  - UplinkBundles
-  conditions:
-  - !type:StoreWhitelistCondition
-    whitelist:
-      tags:
-      - NukeOpsUplink
-  - !type:BuyerWhitelistCondition
-    blacklist:
-      components:
-      - SurplusBundle
-
-- type: listing
   id: UplinkSurplusBundle
   description: Contains 50 telecrystals worth of completely random Syndicate items. It can be useless junk or really good.
   productEntity: CrateSyndicateSurplusBundle

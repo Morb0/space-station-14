@@ -236,20 +236,6 @@
 
 - type: entity
   parent: ClothingBackpackDuffelSyndicateBundle
-  id: ClothingBackpackDuffelZombieBundle
-  name: syndicate zombie bundle
-  description: "An all-in-one kit for unleashing the undead upon a station."
-  components:
-  - type: StorageFill
-    contents:
-      - id: SyringeCorpium
-      - id: WeaponFlareGun
-      - id: BoxShotgunFlare
-      - id: PillRomerol
-        amount: 3
-
-- type: entity
-  parent: ClothingBackpackDuffelSyndicateBundle
   id: ClothingBackpackDuffelSyndicateOperative
   name: operative duffelbag
   components:

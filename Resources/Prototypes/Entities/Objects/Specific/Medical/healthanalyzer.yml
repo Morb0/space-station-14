@@ -38,13 +38,3 @@
   - type: HealthAnalyzer
     fake: true
     disease: OwOnavirus
-
-- type: entity
-  parent: HandheldHealthAnalyzer
-  id: HandheldHealthAnalyzerZombie
-  name: Zombie Infector
-  suffix: Active
-  components:
-  - type: HealthAnalyzer
-    fake: true
-    disease: ActiveZombieVirus

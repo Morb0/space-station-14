@@ -1,6 +1,5 @@
 using Content.Server.GameTicking.Rules;
 using Content.Server.Mind.Components;
-using Content.Server.Zombies;
 using Content.Shared.Administration;
 using Content.Shared.Database;
 using Content.Shared.Verbs;
@@ -11,7 +10,6 @@ namespace Content.Server.Administration.Systems;
 
 public sealed partial class AdminVerbSystem
 {
-    [Dependency] private readonly ZombifyOnDeathSystem _zombify = default!;
     [Dependency] private readonly TraitorRuleSystem _traitorRule = default!;
     [Dependency] private readonly NukeopsRuleSystem _nukeopsRule = default!;
     [Dependency] private readonly PiratesRuleSystem _piratesRule = default!;
@@ -47,25 +45,6 @@ public sealed partial class AdminVerbSystem
             Message = Loc.GetString("admin-verb-make-traitor"),
         };
         args.Verbs.Add(traitor);
-
-        Verb zombie = new()
-        {
-            Text = "Make Zombie",
-            Category = VerbCategory.Antag,
-            IconTexture = "/Textures/Structures/Wallmounts/signs.rsi/bio.png",
-            Act = () =>
-            {
-                TryComp(args.Target, out MindComponent? mindComp);
-                if (mindComp == null || mindComp.Mind == null)
-                    return;
-
-                _zombify.ZombifyEntity(targetMindComp.Owner);
-            },
-            Impact = LogImpact.High,
-            Message = Loc.GetString("admin-verb-make-zombie"),
-        };
-        args.Verbs.Add(zombie);
-
 
         Verb nukeOp = new()
         {

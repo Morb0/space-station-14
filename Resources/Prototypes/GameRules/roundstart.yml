@@ -60,12 +60,6 @@
     !type:GenericGameRuleConfiguration
     id: Secret
 
-- type: gameRule
-  id: Zombie
-  config:
-    !type:GenericGameRuleConfiguration
-    id: Zombie
-
 # event schedulers
 - type: gameRule
   id: BasicStationEventScheduler
