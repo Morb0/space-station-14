@@ -38,4 +38,13 @@ public sealed class ElectricityAnomalyComponent : Component
     /// </summary>
     [DataField("nextSecond", customTypeSerializer: typeof(TimeOffsetSerializer)), ViewVariables(VVAccess.ReadWrite)]
     public TimeSpan NextSecond = TimeSpan.Zero;
+<<<<<<< HEAD
+=======
+
+    /// <summary>
+    /// Energy consumed from devices by the emp pulse upon going supercritical.
+    /// <summary>
+    [DataField("empEnergyConsumption"), ViewVariables(VVAccess.ReadWrite)]
+    public float EmpEnergyConsumption = 100000f;
+>>>>>>> 0da5a78509 (Revert "Emp more effects" (#16159))
 }

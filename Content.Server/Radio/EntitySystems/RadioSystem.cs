@@ -78,6 +78,13 @@ public sealed class RadioSystem : EntitySystem
         var chatMsg = new MsgChatMessage { Message = chat };
         var ev = new RadioReceiveEvent(message, messageSource, channel, chatMsg);
 
+<<<<<<< HEAD
+=======
+        var sendAttemptEv = new RadioSendAttemptEvent(channel, radioSource);
+        RaiseLocalEvent(ref sendAttemptEv);
+        var canSend = !sendAttemptEv.Cancelled;
+
+>>>>>>> 0da5a78509 (Revert "Emp more effects" (#16159))
         var sourceMapId = Transform(radioSource).MapID;
         var hasActiveServer = HasActiveServer(sourceMapId, channel.ID);
         var hasMicro = HasComp<RadioMicrophoneComponent>(radioSource);
