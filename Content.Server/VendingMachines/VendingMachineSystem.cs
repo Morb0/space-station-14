@@ -1,5 +1,9 @@
 using Content.Server.Cargo.Systems;
+<<<<<<< HEAD
 using Content.Server.Popups;
+=======
+using Content.Server.Emp;
+>>>>>>> f7950d07e2 (Revert "Revert "Emp more effects" (#16159)" (#16165))
 using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Server.UserInterface;
@@ -13,6 +17,7 @@ using Content.Shared.Destructible;
 using Content.Shared.DoAfter;
 using Content.Shared.Emag.Components;
 using Content.Shared.Emag.Systems;
+using Content.Shared.Emp;
 using Content.Shared.Popups;
 using Content.Shared.Throwing;
 using Content.Shared.VendingMachines;
@@ -20,6 +25,7 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Robust.Shared.Timing;
 
 namespace Content.Server.VendingMachines
 {
@@ -35,6 +41,7 @@ namespace Content.Server.VendingMachines
         [Dependency] private readonly PricingSystem _pricing = default!;
         [Dependency] private readonly ThrowingSystem _throwingSystem = default!;
         [Dependency] private readonly UserInterfaceSystem _userInterfaceSystem = default!;
+        [Dependency] private readonly IGameTiming _timing = default!;
 
         private ISawmill _sawmill = default!;
 
@@ -48,6 +55,7 @@ namespace Content.Server.VendingMachines
             SubscribeLocalEvent<VendingMachineComponent, GotEmaggedEvent>(OnEmagged);
             SubscribeLocalEvent<VendingMachineComponent, DamageChangedEvent>(OnDamage);
             SubscribeLocalEvent<VendingMachineComponent, PriceCalculationEvent>(OnVendingPrice);
+            SubscribeLocalEvent<VendingMachineComponent, EmpPulseEvent>(OnEmpPulse);
 
             SubscribeLocalEvent<VendingMachineComponent, ActivatableUIOpenAttemptEvent>(OnActivatableUIOpenAttempt);
             SubscribeLocalEvent<VendingMachineComponent, BoundUIOpenedEvent>(OnBoundUIOpened);
@@ -435,6 +443,15 @@ namespace Content.Server.VendingMachines
                     }
                 }
             }
+            var disabled = EntityQueryEnumerator<EmpDisabledComponent, VendingMachineComponent>();
+            while (disabled.MoveNext(out var uid, out _, out var comp))
+            {
+                if (comp.NextEmpEject < _timing.CurTime)
+                {
+                    EjectRandom(uid, true, false, comp);
+                    comp.NextEmpEject += TimeSpan.FromSeconds(5 * comp.EjectDelay);
+                }
+            }
         }
 
         public void TryRestockInventory(EntityUid uid, VendingMachineComponent? vendComponent = null)
@@ -447,5 +464,42 @@ namespace Content.Server.VendingMachines
             UpdateVendingMachineInterfaceState(vendComponent);
             TryUpdateVisualState(uid, vendComponent);
         }
+<<<<<<< HEAD
+=======
+
+        private void OnPriceCalculation(EntityUid uid, VendingMachineRestockComponent component, ref PriceCalculationEvent args)
+        {
+            List<double> priceSets = new();
+
+            // Find the most expensive inventory and use that as the highest price.
+            foreach (var vendingInventory in component.CanRestock)
+            {
+                double total = 0;
+
+                if (PrototypeManager.TryIndex(vendingInventory, out VendingMachineInventoryPrototype? inventoryPrototype))
+                {
+                    foreach (var (item, amount) in inventoryPrototype.StartingInventory)
+                    {
+                        if (PrototypeManager.TryIndex(item, out EntityPrototype? entity))
+                            total += _pricing.GetEstimatedPrice(entity) * amount;
+                    }
+                }
+
+                priceSets.Add(total);
+            }
+
+            args.Price += priceSets.Max();
+        }
+
+        private void OnEmpPulse(EntityUid uid, VendingMachineComponent component, ref EmpPulseEvent args)
+        {
+            if (!component.Broken && this.IsPowered(uid, EntityManager))
+            {
+                args.Affected = true;
+                args.Disabled = true;
+                component.NextEmpEject = _timing.CurTime;
+            }
+        }
+>>>>>>> f7950d07e2 (Revert "Revert "Emp more effects" (#16159)" (#16165))
     }
 }

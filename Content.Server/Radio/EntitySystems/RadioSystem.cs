@@ -78,6 +78,14 @@ public sealed class RadioSystem : EntitySystem
         var chatMsg = new MsgChatMessage { Message = chat };
         var ev = new RadioReceiveEvent(message, messageSource, channel, chatMsg);
 
+<<<<<<< HEAD
+=======
+        var sendAttemptEv = new RadioSendAttemptEvent(channel, radioSource);
+        RaiseLocalEvent(ref sendAttemptEv);
+        RaiseLocalEvent(radioSource, ref sendAttemptEv);
+        var canSend = !sendAttemptEv.Cancelled;
+
+>>>>>>> f7950d07e2 (Revert "Revert "Emp more effects" (#16159)" (#16165))
         var sourceMapId = Transform(radioSource).MapID;
         var hasActiveServer = HasActiveServer(sourceMapId, channel.ID);
         var hasMicro = HasComp<RadioMicrophoneComponent>(radioSource);
@@ -101,6 +109,7 @@ public sealed class RadioSystem : EntitySystem
             // check if message can be sent to specific receiver
             var attemptEv = new RadioReceiveAttemptEvent(channel, radioSource, receiver);
             RaiseLocalEvent(ref attemptEv);
+            RaiseLocalEvent(receiver, ref attemptEv);
             if (attemptEv.Cancelled)
                 continue;
 
