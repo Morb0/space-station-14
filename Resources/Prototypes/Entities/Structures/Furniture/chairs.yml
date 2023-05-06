@@ -56,6 +56,10 @@
   components:
   - type: Transform
     anchored: true
+<<<<<<< HEAD
+=======
+  - type: Anchorable
+>>>>>>> de1613f7ef (Revert "Fix UninitializedSaveTest prototypes" (#16169))
   - type: Rotatable
   - type: Sprite
     state: chair
@@ -122,6 +126,10 @@
   components:
   - type: Transform
     anchored: true
+<<<<<<< HEAD
+=======
+  - type: Anchorable
+>>>>>>> de1613f7ef (Revert "Fix UninitializedSaveTest prototypes" (#16169))
   - type: Rotatable
   - type: Sprite
     state: comfy
@@ -137,6 +145,10 @@
   components:
   - type: Transform
     anchored: true
+<<<<<<< HEAD
+=======
+  - type: Anchorable
+>>>>>>> de1613f7ef (Revert "Fix UninitializedSaveTest prototypes" (#16169))
   - type: Rotatable
   - type: Sprite
     state: shuttle
