@@ -1,5 +1,8 @@
 using Content.Server.Cargo.Systems;
+<<<<<<< HEAD
 using Content.Server.Popups;
+=======
+>>>>>>> 0da5a78509 (Revert "Emp more effects" (#16159))
 using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Server.UserInterface;
@@ -447,5 +450,32 @@ namespace Content.Server.VendingMachines
             UpdateVendingMachineInterfaceState(vendComponent);
             TryUpdateVisualState(uid, vendComponent);
         }
+<<<<<<< HEAD
+=======
+
+        private void OnPriceCalculation(EntityUid uid, VendingMachineRestockComponent component, ref PriceCalculationEvent args)
+        {
+            List<double> priceSets = new();
+
+            // Find the most expensive inventory and use that as the highest price.
+            foreach (var vendingInventory in component.CanRestock)
+            {
+                double total = 0;
+
+                if (PrototypeManager.TryIndex(vendingInventory, out VendingMachineInventoryPrototype? inventoryPrototype))
+                {
+                    foreach (var (item, amount) in inventoryPrototype.StartingInventory)
+                    {
+                        if (PrototypeManager.TryIndex(item, out EntityPrototype? entity))
+                            total += _pricing.GetEstimatedPrice(entity) * amount;
+                    }
+                }
+
+                priceSets.Add(total);
+            }
+
+            args.Price += priceSets.Max();
+        }
+>>>>>>> 0da5a78509 (Revert "Emp more effects" (#16159))
     }
 }
