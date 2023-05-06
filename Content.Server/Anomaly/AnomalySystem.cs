@@ -44,6 +44,7 @@ public sealed partial class AnomalySystem : SharedAnomalySystem
         InitializeGenerator();
         InitializeScanner();
         InitializeVessel();
+        InitializeCommands();
     }
 
     private void OnMapInit(EntityUid uid, AnomalyComponent component, MapInitEvent args)
