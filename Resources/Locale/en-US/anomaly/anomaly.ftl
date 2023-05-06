@@ -35,4 +35,15 @@ anomaly-generator-charges = {$charges ->
     [one] {$charges} charge
     *[other] {$charges} charges
 }
+<<<<<<< HEAD
 anomaly-generator-announcement = An anomaly has been generated!
+=======
+anomaly-generator-announcement = An anomaly has been generated!
+
+anomaly-command-pulse = Pulses a target anomaly
+anomaly-command-supercritical = Makes a target anomaly go supercritical
+
+# Flavor text on the footer
+anomaly-generator-flavor-left = Anomaly may spawn inside the operator.
+anomaly-generator-flavor-right = v1.1
+>>>>>>> f1f28dcc19 (anomaly commands (#16179))
