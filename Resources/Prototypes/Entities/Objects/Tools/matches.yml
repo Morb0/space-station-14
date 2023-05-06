@@ -73,11 +73,17 @@
   - type: Item
     sprite: Objects/Tools/matches.rsi
     heldPrefix: matchbox
+<<<<<<< HEAD
     size: 10
+=======
+    size: 5
+  - type: Storage
+    capacity: 5
+>>>>>>> 0906a4b912 (Cig packs quick fix (#16152))
   - type: StorageFill
     contents:
       - id: Matchstick
-        amount: 6
+        amount: 5
   - type: ItemCounter
     count:
       tags: [Matchstick]
