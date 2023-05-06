@@ -55,6 +55,12 @@ public sealed class ElectricityAnomalySystem : EntitySystem
         {
             _lightning.ShootLightning(uid, ent);
         }
+<<<<<<< HEAD
+=======
+
+        var empRange = component.MaxElectrocuteRange * 3;
+        _emp.EmpPulse(Transform(uid).MapPosition, empRange, component.EmpEnergyConsumption, component.EmpDisabledDuration);
+>>>>>>> f7950d07e2 (Revert "Revert "Emp more effects" (#16159)" (#16165))
     }
 
     public override void Update(float frameTime)
