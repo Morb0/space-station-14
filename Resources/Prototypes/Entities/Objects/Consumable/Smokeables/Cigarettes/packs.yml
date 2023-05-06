@@ -11,13 +11,17 @@
   - type: Recyclable
   - type: SpaceGarbage
   - type: Storage
+<<<<<<< HEAD
     capacity: 6
+=======
+    capacity: 5
+>>>>>>> 0906a4b912 (Cig packs quick fix (#16152))
   - type: Item
     size: 6
   - type: StorageFill
     contents:
     - id: Cigarette
-      amount: 6
+      amount: 5
   - type: ItemCounter
     count:
       tags: [Cigarette]
@@ -49,7 +53,6 @@
     - state: closed
   - type: Item
     sprite: Objects/Consumable/Smokeables/Cigarettes/Packs/green.rsi
-    size: 6
 
 - type: entity
   id: CigPackRed
@@ -64,7 +67,6 @@
     - state: closed
   - type: Item
     sprite: Objects/Consumable/Smokeables/Cigarettes/Packs/red.rsi
-    size: 6
 
 - type: entity
   id: CigPackBlue
@@ -79,7 +81,6 @@
     - state: closed
   - type: Item
     sprite: Objects/Consumable/Smokeables/Cigarettes/Packs/blue.rsi
-    size: 6
 
 - type: entity
   id: CigPackBlack
@@ -94,7 +95,6 @@
     - state: closed
   - type: Item
     sprite: Objects/Consumable/Smokeables/Cigarettes/Packs/black.rsi
-    size: 6
 
 - type: entity
   id: CigPackSyndicate
@@ -105,7 +105,7 @@
   - type: StorageFill
     contents:
     - id: CigaretteSyndicate
-      amount: 6
+      amount: 5
   - type: Sprite
     netsync: false
     sprite: Objects/Consumable/Smokeables/Cigarettes/Packs/syndicate.rsi
@@ -113,4 +113,3 @@
     - state: closed
   - type: Item
     sprite: Objects/Consumable/Smokeables/Cigarettes/Packs/syndicate.rsi
-    size: 6
