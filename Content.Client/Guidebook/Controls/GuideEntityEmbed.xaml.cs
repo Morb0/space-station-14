@@ -155,7 +155,7 @@ public sealed partial class GuideEntityEmbed : BoxContainer, IDocumentTag
 
         if (args.TryGetValue("Scale", out var scaleStr))
         {
-            var scale = float.Parse(scaleStr);
+            var scale = float.Parse(scaleStr, CultureInfo.InvariantCulture);
             Scale = new Vector2(scale, scale);
         }
         else
