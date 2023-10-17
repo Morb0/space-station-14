@@ -1,9 +1,11 @@
 ﻿using System.Collections.Immutable;
 using System.Threading.Tasks;
+using Content.Server.Administration.Notes;
 using Content.Server.Database;
 using Content.Server.GameTicking;
 using Content.Server.Preferences.Managers;
 using Content.Shared.CCVar;
+using Content.Shared.Database;
 using Content.Shared.GameTicking;
 using Content.Shared.Players.PlayTimeTracking;
 using Robust.Server.Player;
@@ -29,6 +31,7 @@ namespace Content.Server.Connection
         [Dependency] private readonly IServerDbManager _db = default!;
         [Dependency] private readonly IConfigurationManager _cfg = default!;
         [Dependency] private readonly ILocalizationManager _loc = default!;
+        [Dependency] private readonly IAdminNotesManager _notes = default!;
 
         public void Initialize()
         {
@@ -82,6 +85,14 @@ namespace Content.Server.Connection
 
                 if (!ServerPreferencesManager.ShouldStorePrefs(e.AuthType))
                     return;
+
+                var oldRecord = await _db.GetPlayerRecordByUserId(userId);
+                if (e.UserName == oldRecord?.LastSeenUserName)
+                {
+                    await _notes.AddAdminRemark(null, userId, NoteType.Note,
+                        $"Player changed username from '{oldRecord.LastSeenUserName}' to '{e.UserName}'",
+                        NoteSeverity.Medium, true, null);
+                }
 
                 await _db.UpdatePlayerRecordAsync(userId, e.UserName, addr, e.UserData.HWId);
             }
