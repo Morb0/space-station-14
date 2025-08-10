@@ -34,23 +34,7 @@ public sealed partial class SexRequirement : JobRequirement
         if (profile.Sex == Sex.Unsexed)
             return true;
 
-        var sb = new StringBuilder();
-        sb.Append("[color=yellow]");
-        switch (Sex)
-        {
-            case Sex.Unsexed:
-                sb.Append(Loc.GetString("humanoid-profile-editor-sex-unsexed-text"));
-                break;
-            case Sex.Male:
-                sb.Append(Loc.GetString("humanoid-profile-editor-sex-male-text"));
-                break;
-            case Sex.Female:
-                sb.Append(Loc.GetString("humanoid-profile-editor-sex-female-text"));
-                break;
-        }
-        sb.Append("[/color]");
-
-        reason = FormattedMessage.FromMarkupPermissive($"{Loc.GetString("role-timer-specific-sex")} {sb}");
+        reason = FormattedMessage.FromMarkupPermissive(Loc.GetString("role-timer-specific-sex", ("sex", Sex)));
 
         return profile.Sex == Sex;
     }
